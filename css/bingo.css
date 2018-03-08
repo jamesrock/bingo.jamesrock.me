@@ -1,0 +1,84 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: sans-serif;
+  text-align: center;
+  color: #000;
+	text-shadow: white 5px 5px 5px;
+	font-size: 200px;
+	padding: 20px;
+}
+
+body {
+	transition: all 0.3s;
+}
+
+.card {
+	font-size: 20px;
+	/* border: solid 1px white; */
+	margin: 10px;
+}
+
+.card-row:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.card-row-col {
+	float: left;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	border: solid 1px white;
+	text-shadow: none;
+}
+
+body[data-colour="red"] {
+	background-color: red;
+}
+
+body[data-colour="orange"] {
+	background-color: orange;
+}
+
+body[data-colour="yellow"] {
+	background-color: yellow;
+}
+
+body[data-colour="green"] {
+	background-color: green;
+}
+
+body[data-colour="blue"] {
+	background-color: blue;
+}
+
+body[data-colour="indigo"] {
+	background-color: indigo;
+}
+
+body[data-colour="violet"] {
+	background-color: violet;
+}
+
+body[data-colour="red"],
+body[data-colour="green"],
+body[data-colour="blue"],
+body[data-colour="indigo"] {
+	color: white;
+	text-shadow: black 5px 5px 5px;
+}
+
+@media (width: 768px), (height: 1024px) {
+
+	/* iPad mini */
+
+	body {
+		font-size: 120px;
+	}
+
+}
