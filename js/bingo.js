@@ -17,9 +17,10 @@
 		'violet'
 	],
 	colour = 0,
-	cols = [[1, 10], [11, 20], [21, 30], [31, 40], [41, 50], [51, 60], [61, 70], [71, 80], [81, 90]],
-	cards = [],
-	cardCount = 6,
+	cols = [[1, 9], [10, 19], [20, 29], [30, 39], [40, 49], [50, 59], [60, 69], [70, 79], [80, 90]],
+	cards,
+	cardCount,
+	logging = false,
 	getNumber = function() {
 
 		if(numbers.length) {
@@ -118,6 +119,10 @@
 	},
 	populateCards = function() {
 
+		cards = [];
+		cardCount = 6;
+		populateNumbers();
+
 		while(cardCount--) {
 			cards.push([
 				[0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -138,7 +143,7 @@
 
 			numberToUse = getNumber();
 
-			console.log('numberToUse', numberToUse);
+			logging&&console.log('numberToUse', numberToUse);
 
 			for(var cardIndex=0;cardIndex<cards.length;cardIndex++) {
 
@@ -180,13 +185,13 @@
 
 						col = row[colIndex];
 
-						console.log(numberToUse);
+						logging&&console.log(numberToUse);
 
 						if(col===0&&numberToUse>=cols[colIndex][0]&&numberToUse<=cols[colIndex][1]) {
 
 							cards[cardIndex][rowIndex][colIndex] = numberToUse;
 
-							console.log([cardIndex, rowIndex, colIndex, numberToUse].join(' '));
+							logging&&console.log([cardIndex, rowIndex, colIndex, numberToUse].join(' '));
 							addNumber();
 
 						};
@@ -197,13 +202,20 @@
 
 			};
 
-
 		};
 
 		addNumber();
 
+		if(number) {
+			console.log('not all numbers used, so cards are repopulated');
+			populateCards();
+		}
+		else {
+			console.log('all numbers used, so numbers are repopulated');
+			// populateNumbers();
+		};
+
 		console.log(numbers);
-		console.log(cards);
 
 	};
 
@@ -221,7 +233,7 @@
 
 	});
 
-	populateNumbers();
+	// populateNumbers();
 	populateCards();
 	render();
 
