@@ -9,7 +9,6 @@ body {
   color: #000;
 	text-shadow: white 5px 5px 5px;
 	font-size: 200px;
-	padding: 20px;
 }
 
 body {
@@ -18,10 +17,11 @@ body {
 
 .card {
 	font-size: 20px;
-	/* border: solid 1px white; */
 	margin: 10px;
+	/* float: left; */
 }
 
+.cards:after,
 .card-row:after {
 	content: "";
 	display: block;

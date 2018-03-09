@@ -6,7 +6,7 @@
 	called = [],
 	numbers = [],
 	target = document.getElementById('app'),
-	template = '<div id="number">{number}</div><div>{cards}</div>',
+	template = '<div id="number">{number}</div><div class="cards">{cards}</div>',
 	colours = [
 		'red',
 		'orange',
@@ -127,24 +127,32 @@
 		};
 
 		var
+		numberToUse = 0,
 		addNumber = function() {
 
 			var
 			card,
 			row,
 			col,
-			numberOfNumbersInRow,
+			numberOfNumbersInRow = 0;
+
 			numberToUse = getNumber();
 
-			if(!numberToUse) {
-				return;
-			};
+			console.log('numberToUse', numberToUse);
 
 			for(var cardIndex=0;cardIndex<cards.length;cardIndex++) {
+
+				if(!numberToUse) {
+					break;
+				};
 
 				card = cards[cardIndex];
 
 				for(var rowIndex=0;rowIndex<card.length;rowIndex++) {
+
+					if(!numberToUse) {
+						break;
+					};
 
 					row = card[rowIndex];
 
@@ -166,13 +174,19 @@
 
 					for(var colIndex=0;colIndex<row.length;colIndex++) {
 
+						if(!numberToUse) {
+							break;
+						};
+
 						col = row[colIndex];
 
-						if(col===0&&numberOfNumbersInRow<5&&numberToUse>=cols[colIndex][0]&&numberToUse<=cols[colIndex][1]) {
+						console.log(numberToUse);
+
+						if(col===0&&numberToUse>=cols[colIndex][0]&&numberToUse<=cols[colIndex][1]) {
 
 							cards[cardIndex][rowIndex][colIndex] = numberToUse;
 
-							// console.log([cardIndex, rowIndex, colIndex, numberToUse].join(' '));
+							console.log([cardIndex, rowIndex, colIndex, numberToUse].join(' '));
 							addNumber();
 
 						};
@@ -180,7 +194,9 @@
 					};
 
 				};
+
 			};
+
 
 		};
 
