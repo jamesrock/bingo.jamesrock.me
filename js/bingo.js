@@ -82,20 +82,6 @@
 		return colour;
 
 	},
-	calledToString = function() {
-
-		var
-		out = [];
-
-		called.forEach(function(item) {
-
-			out.push('<div>' + item + '</div>');
-
-		});
-
-		return '<div>fresh out! call order...</div><div>' + out.join('') + '</div>';
-
-	},
 	cardsToString = function() {
 
 		var
