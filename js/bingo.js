@@ -3,8 +3,8 @@
 	var
 	max = 90,
 	number = 0,
-	called = [],
-	numbers = [],
+	called,
+	numbers,
 	target = document.getElementById('app'),
 	template = '<div id="number">{number}</div><div class="cards">{cards}</div>',
 	colours = [
@@ -21,6 +21,22 @@
 	cards,
 	cardCount,
 	logging = false,
+	ifOneOf = function(collection, value) {
+
+		var
+		loop = collection.length,
+		out = false;
+
+		while(loop--) {
+			if(collection[loop]===value) {
+				out = true;
+				break;
+			}
+		};
+
+		return out;
+
+	},
 	getNumber = function() {
 
 		if(numbers.length) {
@@ -95,7 +111,8 @@
 
 				row.forEach(function(col) {
 
-					output += '<div class="card-row-col">' + (col>0?col:'') + '</div>';
+					var className = ifOneOf(called, col)?'card-row-col called':'card-row-col';
+					output += '<div class="' + className + '">' + (col>0?col:'') + '</div>';
 
 				});
 
@@ -111,6 +128,9 @@
 
 	},
 	populateNumbers = function() {
+
+		called = [];
+		numbers = [];
 
 		for(var i=1;i<=max;i++) {
 			numbers.push(i);
@@ -212,7 +232,7 @@
 		}
 		else {
 			console.log('all numbers used, so numbers are repopulated');
-			// populateNumbers();
+			populateNumbers();
 		};
 
 		console.log(numbers);
@@ -227,7 +247,7 @@
 
 	document.addEventListener('click', function(e) {
 
-		incrementColour();
+		// incrementColour();
 		getNumber();
 		render();
 

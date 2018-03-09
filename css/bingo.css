@@ -19,6 +19,7 @@ body {
 	font-size: 20px;
 	margin: 10px;
 	float: left;
+	border: solid 1px white;
 }
 
 .cards:after,
@@ -35,6 +36,10 @@ body {
 	line-height: 40px;
 	border: solid 1px white;
 	text-shadow: none;
+}
+
+.card-row-col.called {
+	background-color: grey;
 }
 
 body[data-colour="red"] {
