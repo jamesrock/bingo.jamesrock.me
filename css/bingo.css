@@ -16,7 +16,8 @@ body {
 }
 
 .card {
-	font-size: 20px;
+	font-size: 26px;
+	font-weight: bold;
 	margin: 10px;
 	float: left;
 	border: solid 1px white;

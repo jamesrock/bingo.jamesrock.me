@@ -221,8 +221,6 @@
 			populateNumbers();
 		};
 
-		console.log(numbers);
-
 	};
 
 	document.addEventListener('mousedown', function(e) {
@@ -239,7 +237,6 @@
 
 	});
 
-	// populateNumbers();
 	populateCards();
 	render();
 
