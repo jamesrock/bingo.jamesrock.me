@@ -223,13 +223,13 @@
 
 	};
 
-	document.addEventListener('mousedown', function(e) {
+	document.body.addEventListener('mousedown', function(e) {
 
 		e.preventDefault();
 
 	});
 
-	document.addEventListener('click', function(e) {
+	document.body.addEventListener('click', function(e) {
 
 		// incrementColour();
 		getNumber();
