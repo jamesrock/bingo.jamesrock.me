@@ -5,8 +5,7 @@
 	number = 0,
 	called,
 	numbers,
-	target = document.getElementById('app'),
-	template = '<div id="number">{number}</div><div class="cards">{cards}</div>',
+	template = '<div class="number">{number}</div><div class="cards">{cards}</div>',
 	colours = [
 		'red',
 		'orange',
@@ -64,8 +63,8 @@
 		return out;
 	},
 	render = function(props) {
-		target.innerHTML = replacer(template, {
-			number: number,
+		app.innerHTML = replacer(template, {
+			number,
 			cards: cardsToString()
 		});
 		document.body.setAttribute('data-colour', colours[colour]);
@@ -221,15 +220,41 @@
 			populateNumbers();
 		};
 
+	},
+	delegate = function(selector, event, handler) {
+
+		var
+		items,
+		loop;
+
+		document.documentElement.addEventListener(event, function(event) {
+
+			items = document.querySelectorAll(selector);
+			loop = items.length;
+
+			console.log('fire!', items, event.target);
+
+			while(loop--) {
+
+				if(event.target===items[loop]) {
+					handler.call(items, event);
+				};
+
+			};
+
+		});
+
+		return items;
+
 	};
 
-	document.body.addEventListener('mousedown', function(e) {
+	delegate('.number', 'mousedown', function(e) {
 
 		e.preventDefault();
 
 	});
 
-	document.body.addEventListener('click', function(e) {
+	delegate('.number', 'click', function() {
 
 		// incrementColour();
 		getNumber();
