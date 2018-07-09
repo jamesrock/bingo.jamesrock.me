@@ -232,8 +232,6 @@
 			items = document.querySelectorAll(selector);
 			loop = items.length;
 
-			console.log('fire!', items, event.target);
-
 			while(loop--) {
 
 				if(event.target===items[loop]) {
